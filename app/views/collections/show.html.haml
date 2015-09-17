@@ -1,0 +1,22 @@
+%h2
+  = @collection.name
+
+%div
+  = @collection.description
+  %ul
+    = form_for @collection do |f|
+      - @collection.uploaded_files.each do |file|
+        - if file.id.present?
+          %li
+            %div
+              = image_tag file.attach_file
+              %br
+              %p
+                = file.caption
+      = f.fields_for :uploaded_files do |form|
+        = form.text_field :caption
+        %br
+        = form.attachment_field :attach_file
+      %br
+      %h3
+        = f.submit "Submit"

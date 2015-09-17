@@ -49,3 +49,5 @@ end
 gem "mysql2", '~> 0.3.18'
 gem "refile", require: "refile/rails"
 gem "refile-mini_magick"
+gem "haml"
+gem "better_errors"
