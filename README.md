@@ -3,7 +3,7 @@
 ###Usage:
 * Bundle install
 ```
-bundle install
+$ bundle install
 ```
 * Dabtabase setup
 ```
