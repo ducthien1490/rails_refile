@@ -5,18 +5,19 @@
   = @collection.description
   %ul
     = form_for @collection do |f|
-      - @collection.uploaded_files.each do |file|
-        - if file.id.present?
-          %li
-            %div
-              = image_tag file.attach_file
-              %br
-              %p
-                = file.caption
       = f.fields_for :uploaded_files do |form|
-        = form.text_field :caption
-        %br
-        = form.attachment_field :attach_file
+        - if form.object.attach_file
+          %li
+            = form.object.caption
+            = link_to "Delete", "Javascrip:void(0);"
+            %br
+            = attachment_image_tag form.object, :attach_file, :fill, 150, 150
+            = f.hidden_field :_destroy
+        - else
+          %br
+          = form.text_field :caption
+          %br
+          = form.attachment_field :attach_file, direct: true
       %br
       %h3
         = f.submit "Submit"

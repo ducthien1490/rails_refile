@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150917115955) do
+ActiveRecord::Schema.define(version: 20150920112006) do
 
   create_table "collections", force: :cascade do |t|
     t.string   "name",        limit: 255
@@ -21,12 +21,13 @@ ActiveRecord::Schema.define(version: 20150917115955) do
   end
 
   create_table "uploaded_files", force: :cascade do |t|
-    t.integer  "collection_id", limit: 4
-    t.text     "caption",       limit: 65535
-    t.string   "attach_file",   limit: 255
-    t.integer  "size",          limit: 4
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
+    t.integer  "collection_id",  limit: 4
+    t.text     "caption",        limit: 65535
+    t.string   "attach_file",    limit: 255
+    t.integer  "size",           limit: 4
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+    t.string   "attach_file_id", limit: 255
   end
 
 end

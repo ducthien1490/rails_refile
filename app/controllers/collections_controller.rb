@@ -10,6 +10,7 @@ class CollectionsController < ApplicationController
 
   def update
     @collection.update collection_params
+    redirect_to action: :show, id: @collection.id
   end
 
   def show
