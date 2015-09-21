@@ -9,15 +9,20 @@
         - if form.object.attach_file
           %li
             = form.object.caption
-            = link_to "Delete", "Javascrip:void(0);"
+            %br
+            = form.check_box :remove_attach_file
+            = form.label :remove_attach_file
             %br
             = attachment_image_tag form.object, :attach_file, :fill, 150, 150
-            = f.hidden_field :_destroy
         - else
           %br
           = form.text_field :caption
           %br
           = form.attachment_field :attach_file, direct: true
+          %br
+          = form.label :remote_attach_file_url, "Or specify URL"
+          %br
+          = form.text_field :remote_attach_file_url
       %br
       %h3
         = f.submit "Submit"
