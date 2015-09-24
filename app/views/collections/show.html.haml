@@ -4,25 +4,14 @@
 %div
   = @collection.description
   %ul
+    - @collection.uploaded_files.each do |file|
+      %li
+        = attachment_image_tag file, :attach_file, :fill, 150, 150
+    %br
     = form_for @collection do |f|
-      = f.fields_for :uploaded_files do |form|
-        - if form.object.attach_file
-          %li
-            = form.object.caption
-            %br
-            = form.check_box :remove_attach_file
-            = form.label :remove_attach_file
-            %br
-            = attachment_image_tag form.object, :attach_file, :fill, 150, 150
-        - else
-          %br
-          = form.text_field :caption
-          %br
-          = form.attachment_field :attach_file, direct: true
-          %br
-          = form.label :remote_attach_file_url, "Or specify URL"
-          %br
-          = form.text_field :remote_attach_file_url
+      = f.label :uploaded_files
+      = f.attachment_field :uploaded_files_attach_files , multiple: true
+
       %br
       %h3
         = f.submit "Submit"

@@ -27,8 +27,6 @@ class CollectionsController < ApplicationController
   end
 
   def collection_params
-    params.require(:collection).permit(:name, :description,
-      uploaded_files_attributes: [:id, :caption, :attach_file,
-        :remove_attach_file, :remote_attach_file_url])
+    params.require(:collection).permit(uploaded_files_attach_files: [])
   end
 end
